@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <Button
+        android:id="@+id/verif"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Demarrer la partie"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="45dp"
+        android:id="@+id/res"
+
+        />
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="45dp"
+        android:id="@+id/clicks"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:hint="            Saisir votre nombre"
+
+        android:textSize="25dp"
+        android:id="@+id/pr"
+        android:inputType="number"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="45dp"
+        android:id="@+id/ran"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="45dp"
+        android:id="@+id/tv_m"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/reload"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
+            android:layout_gravity="left"
+            />
+    <ImageButton
+        android:id="@+id/term"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right"
+        />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/myrow"
+        android:id="@+id/rv"
+        />
+
+</LinearLayout>
