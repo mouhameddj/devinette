@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
@@ -23,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    public RecyclerView rv;
+
     MyDatabaseHelper Mydb;
     ArrayList<String> player_id,devinette_title,score;
     public EditText ed1;
@@ -55,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        rv=(RecyclerView) findViewById(R.id.rv);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         tv_p=(TextView) findViewById(R.id.ran);
         tv_r=(TextView) findViewById(R.id.res);
         tv_c=(TextView) findViewById(R.id.clicks);
@@ -66,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         term=(ImageButton) findViewById(R.id.term);
         Bundle extras=getIntent().getExtras();
         String p =extras.getString("Nom");
+
+
 
 
 
@@ -94,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                        // tv_c.setText("seconds remaining: " + mTimeLeftInMillis / 1000);
-                        tv_c.setText("seconds remaining: " + mTimeLeftInMillis+"s");
+                        tv_c.setText("" + (100-mTimeLeftInMillis)+"s");
 
 
 
@@ -108,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
 
                     public void onFinish() {
 
-                        tv_c.setText("time finish");
-
+                        tv_p.setText("Vous Avez Perdu");
+                        tv_p.setTextColor(Color.RED);
                     }
                 }.start();
 
@@ -117,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                 int rs = r.nextInt(100);
 
                 a = rs;
-           tv_r.setText(String.valueOf(a));
+                Toast.makeText(MainActivity.this, ""+a, Toast.LENGTH_SHORT).show();
+         //  tv_r.setText(String.valueOf(a));
                 number_of_clicks=0;
             //   tv_c.setText(String.valueOf(number_of_clicks));
 
@@ -135,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
                 number_of_clicks++;
               //  tv_c.setText(String.valueOf(number_of_clicks));
 
@@ -146,10 +155,12 @@ public class MainActivity extends AppCompatActivity {
                 String b =  ed1.getText().toString();
                 int number = Integer.parseInt(b);
                 if(number<a){
-                  tv_p.setText("plus");
+                  tv_p.setText("Plus QUE "+number);
+                  tv_p.setTextColor(Color.BLACK);
 
                 }else if(number>a){
-                   tv_p.setText("moins");
+                   tv_p.setText("Moins QUE "+ number);
+                    tv_p.setTextColor(Color.BLACK);
                     }
 
 
@@ -161,7 +172,8 @@ public class MainActivity extends AppCompatActivity {
                     tv_m.setText("score : "+sc1);
 
 
-                  tv_p.setText("gagne");
+                  tv_p.setText("Vous Avez Gagné");
+                    tv_p.setTextColor(Color.GREEN);
 
 
 
@@ -184,17 +196,14 @@ public class MainActivity extends AppCompatActivity {
                 myDB.addScore(p.trim(),
 
                        sc2.trim());
+                Intent intent = new Intent(MainActivity.this,recyclerv.class);
+                startActivity(intent);
+
 
             }
+
         });
-        Mydb = new MyDatabaseHelper(MainActivity.this);
-        devinette_title = new ArrayList<>();
-        score = new ArrayList<>();
-        player_id = new ArrayList<>();
-        storeDataInArrays();
-        CustomAdapter = new CustomAdapter(MainActivity.this,player_id,devinette_title, score);
-        rv.setAdapter(CustomAdapter);
-        rv.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
     }
 
     void storeDataInArrays(){
@@ -219,9 +228,6 @@ public class MainActivity extends AppCompatActivity {
         mCountDownTimer.cancel();
     }
     private void resetTimer(){};
-
-
-
 
 
 }

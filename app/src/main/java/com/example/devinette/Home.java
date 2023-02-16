@@ -22,6 +22,9 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         logoutBtn = findViewById(R.id.idBtnLogout);
 
         // initializing our variables

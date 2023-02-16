@@ -12,7 +12,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Title"
-            android:textSize="18dp"
+            android:textSize="30dp"
+            android:textColor="@color/teal_700"
             android:id="@+id/devinette_title"
             android:textAlignment="center"/>
 
@@ -26,8 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/score"
+            android:textColor="@color/teal_700"
             android:hint="255"
-            android:textSize="18dp"
+            android:textSize="30dp"
             android:src="@mipmap/ic_launcher_round"/>
     </LinearLayout>
 </LinearLayout>
