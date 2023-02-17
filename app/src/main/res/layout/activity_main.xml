@@ -93,18 +93,15 @@ android:backgroundTint="@color/teal_700"
         android:id="@+id/tv_m"
 
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-android:orientation="horizontal">
+
 
 
     <ImageButton
         android:id="@+id/term"
         android:layout_width="80dp"
         android:layout_height="60dp"
-        android:layout_gravity="right"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_density_small_24"
         />
     </LinearLayout>
 
-</LinearLayout>
